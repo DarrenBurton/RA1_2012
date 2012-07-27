@@ -834,8 +834,8 @@ class Webpage_Maker(object):
                 for plot in sorter: htF.write('<a href='+plot+'><img height=\"400\" src=\"'+plot+'\"></a> \n') 
 
         if option == "btag":
-          self.btag_slices = {'Zero':"0-btag",'One':"1-btag",'Two':"2-btag","Inclusive":"Inclusive",'More_Than_Zero':"A btag",'More_Than_Two':"More Than Two"}
-          self.btag_names = {'More_Than_Two':"_btag_morethantwo_"+self.category,'More_Than_Zero':"_btag_morethanzero_"+self.category,'Zero':"_btag_zero_"+self.category,'One':"_btag_one_"+self.category,'Two':"_btag_two_"+self.category,"Inclusive":'_'+self.category }
+          self.btag_slices = {'Zero':"0-btag",'One':"1-btag",'Two':"2-btag","Inclusive":"Inclusive",'More_Than_Zero':"A btag",'More_Than_Two':"More Than Two",'More_Than_Three':"More Than Three"}
+          self.btag_names = {'More_Than_Three':"_btag_morethanthree_"+self.category,'More_Than_Two':"_btag_morethantwo_"+self.category,'More_Than_Zero':"_btag_morethanzero_"+self.category,'Zero':"_btag_zero_"+self.category,'One':"_btag_one_"+self.category,'Two':"_btag_two_"+self.category,"Inclusive":'_'+self.category }
 
           self.Alpha_Webpage(foldername,plotnames,link="Zero",outertitle="HT Bins:  ")
           self.Alpha_Webpage(self.btag_slices,plotnames,link=foldername[0],outertitle="Btag Multiplicities:  ",slice="True")
@@ -905,7 +905,7 @@ class Webpage_Maker(object):
             htF.write('<br><br>')
             
             jet_array = ['2','3','all']
-            btag_array = ['_','_btag_morethanzero_','_btag_morethanone_','_btag_morethantwo_','_btag_zero_','_btag_one_','_btag_two_']
+            btag_array = ['_','_btag_morethanzero_','_btag_morethanone_','_btag_morethantwo_','_btag_morethanthree_','_btag_zero_','_btag_one_','_btag_two_']
             if self.title == "Had": 
               for num,entry in enumerate(btag_array): btag_array[num] = (entry.rstrip('_'))
               for num,entry in enumerate(self.btag_names): 

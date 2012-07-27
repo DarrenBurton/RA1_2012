@@ -266,6 +266,7 @@ class Number_Extractor(object):
 
       if self.Make_Closure_Tests == "True" or self.Make_Root_Stats_File == "True": pass
       else: self.table = open('%s_Predictions_AlphaT_%s.tex' % (self.Form_Vanilla,self.number)  ,'w')
+      self.Make_Preamble()
       for slices in settings['AlphaTSlices']:
         
         print "Making Predictions for %s" %slices
@@ -815,5 +816,36 @@ class Number_Extractor(object):
       s += "\n\end{table}"
       s += "\n\n\n\n"
       if self.Make_Closure_Tests == "True" or self.Make_Root_Stats_File == "True": pass
-      else:self.table.write(s)
+      else:
+        self.table.write(s)
+        self.Make_End()
+
+  def Make_Preamble(self):
+       s = "\documentclass[english]{article}\n"
+       s += "\usepackage[T1]{fontenc}\n"
+       s += "\usepackage[latin9]{inputenc}\n"
+       s +=  "\usepackage[letterpaper]{geometry}\n"
+       s += "\geometry{verbose,bmargin=1cm,lmargin=0.5cm,rmargin=0.5cm}\n"
+       s += "\usepackage{float}\n"
+       s += "\usepackage{graphicx}\n"
+       s += "\usepackage{babel}\n"
+       s += "\usepackage{parskip}\n"
+       s += "\usepackage{subfigure}\n"
+       s += "\usepackage{soul}\n"
+       s += "\usepackage{cancel}\n"
+       s += "\usepackage{setspace}\n"
+       s += "\usepackage{subfig}\n"
+       s += "\usepackage{rotating}\n"
+       s += "\usepackage{multirow}\n"
+
+       s += "\input{ptdr-definitions}\n"
+       s += "\input{symbols}\n"
+       s += "\ begin{document}\n"
+
+       self.table.write(s) 
+          
+  def Make_End(self):   
+      
+      s = "\end{document}"
+      self.table.write(s) 
 
